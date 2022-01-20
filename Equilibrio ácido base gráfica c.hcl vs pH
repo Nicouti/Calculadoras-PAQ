@@ -1,0 +1,13 @@
+Kw = 1e-14
+problema = function(pH, CHCl){
+  H3O = 10^-pH
+  HO= Kw / H3O
+  Cl = CHCl
+  H3O - Cl - HO
+  
+}
+CHCl= 10^-seq(1, 9, by = 0.1)
+pH = sapply (CHCl, function(x)
+  uniroot(problema, CHCl = x, interval = c(0,14), tol= 1e-14)$root)
+plot(CHCl, pH, log = "x", type = "l")  
+  
